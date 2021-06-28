@@ -64,8 +64,8 @@
         console.log('produk =>'+ JSON.stringify(produk))
 
         ProductService.createProduk(produk).then(
-            res => {
-             
+            (res) => {
+             console.log(res)
             }
         );
 
@@ -76,8 +76,7 @@
         this.props.history.push(`/updateAlatTulis/${id}`)
     }
     deleteProduk(id){
-      ProductService.deleteProduk(id).then(res =>{
-
+      ProductService.deleteProduk(id).then(() =>{
           this.setState({produks : this.state.produks.filter(produks => produks.id !== id)});
       });
     }
@@ -92,12 +91,19 @@
                     height:'100vh'
                     }} 
             >
-                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-label="exampleModalLabel" arial-hidden="true">
+
+                
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel"> Add Alat Tulis</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" arial-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           
+                              
+                           
+                           
                             </div>
                             <div className="modal-body">
                                 <div>
@@ -156,10 +162,11 @@
                     </div>
                 </div>
                     
+                    
                 <div>
                     <h2 className="text-center">Alat Tulis</h2>
                     <div className="row">
-                        <button type="button" className="btn-primary" data-bs-dismiss="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Add alat tulis </button>
                     </div>
                     <br/><br/>

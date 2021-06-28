@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import mainPage from './pages/MainPage';
 import UpdateAlatTulis from './pages/UpdateAlatTulis';
+import "bootstrap/dist/css/bootstrap.css"
+import "bootstrap/dist/js/bootstrap.bundle.min.js"
 function App(){
   return(
     <Router>
