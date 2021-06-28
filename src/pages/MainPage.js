@@ -17,7 +17,8 @@
         this.changeDeskripsiHandler = this.changeDeskripsiHandler.bind(this);
         this.chageHargaBeliHandler = this.chageHargaBeliHandler.bind(this);
         this.changeStockHandler = this.changeStockHandler.bind(this);
-         
+        this.editProduk = this.editProduk.bind(this);
+        this.deleteProduk = this.deleteProduk.bind(this);
      }
 
      componentDidMount(){
@@ -64,14 +65,22 @@
 
         ProductService.createProduk(produk).then(
             res => {
-
+             
             }
         );
 
         window.location.reload(false);
     }
      
+    editProduk(id){
+        this.props.history.push(`/updateAlatTulis/${id}`)
+    }
+    deleteProduk(id){
+      ProductService.deleteProduk(id).then(res =>{
 
+          this.setState({produks : this.state.produks.filter(produks => produks.id !== id)});
+      });
+    }
      render() {
 
          return (
@@ -177,8 +186,8 @@
                                         <td>Rp .{produk.hargaBeli}</td>
                                         <td>{produk.stock}</td>
                                         <td>
-                                            <button className="btn btn-info">Update</button>
-                                            <button style={{ marginLeft: "10px"}} className="btn btn-danger">Delete</button>
+                                            <button className="btn btn-info" onClick={ ()=> this.editProduk(produk.id)} >Update</button>
+                                            <button style={{ marginLeft: "10px"}} className="btn btn-danger" onClick={()=>this.deleteProduk(produk.id)}>Delete</button>
                                         </td>
                                     </tr>
   
